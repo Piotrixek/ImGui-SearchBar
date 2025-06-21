@@ -12,7 +12,7 @@ if(NOT EXISTS "${IMGUI_DIR}/imgui.h")
     message(FATAL_ERROR "ImGui directory not found or invalid: ${IMGUI_DIR}. Please set IMGUI_DIR correctly.")
 endif()
 if(NOT EXISTS "${IMGUI_DIR}/imconfig.h")
-    message(WARNING "imconfig.h not found in ${IMGUI_DIR}. Docking/Viewport features might not be enabled correctly unless defined elsewhere (make sure you've uncommented the defines!).")
+
 endif()
 
 set(PROJECT_SOURCES
