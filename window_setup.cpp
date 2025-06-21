@@ -3,7 +3,9 @@
 #include "imgui_impl_win32.h" 
 #include <tchar.h> 
 #include <comdef.h> 
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 HWND SetupWindow(HINSTANCE hInstance, const TCHAR* className)
 {
     WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L, hInstance, NULL, NULL, NULL, NULL, className, NULL };
@@ -11,25 +13,32 @@ HWND SetupWindow(HINSTANCE hInstance, const TCHAR* className)
         MessageBox(NULL, _T("Failed to register window class!"), _T("Error"), MB_OK | MB_ICONERROR);
         return NULL;
     }
+
     HWND hwnd = ::CreateWindowEx(
         0, wc.lpszClassName, _T("ImGui DX11 Host"), WS_POPUP, 
         0, 0, 1, 1, 
         NULL, NULL, wc.hInstance, NULL);
+
     if (!hwnd) {
         MessageBox(NULL, _T("Failed to create hidden host window!"), _T("Error"), MB_OK | MB_ICONERROR);
         ::UnregisterClass(wc.lpszClassName, wc.hInstance);
         return NULL;
     }
+
     return hwnd;
 }
+
 void CleanupWindow(HINSTANCE hInstance, const TCHAR* className)
 {
     ::UnregisterClass(className, hInstance);
 }
+
+
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
         return true; 
+
     switch (msg)
     {
     case WM_SIZE: 
@@ -49,13 +58,16 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         return 0; 
     } 
+
     case WM_SYSCOMMAND: 
         if ((wParam & 0xfff0) == SC_KEYMENU) 
             return 0; 
         break; 
+
     case WM_DESTROY: 
         ::PostQuitMessage(0); 
         return 0; 
     }
+
     return ::DefWindowProc(hWnd, msg, wParam, lParam);
 }

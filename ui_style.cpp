@@ -1,9 +1,11 @@
 #include "ui_style.h"
 #include "imgui.h" 
+
 void ApplyCommandMenuStyle()
 {
     ImGuiStyle& style = ImGui::GetStyle();
     ImVec4* colors = style.Colors;
+
     ImVec4 text_color = ImVec4(0.15f, 0.15f, 0.15f, 1.00f); 
     ImVec4 text_disabled_color = ImVec4(0.55f, 0.55f, 0.55f, 1.00f); 
     ImVec4 bg_main = ImVec4(1.00f, 1.00f, 1.00f, 1.00f); 
@@ -11,6 +13,7 @@ void ApplyCommandMenuStyle()
     ImVec4 border_color = ImVec4(0.88f, 0.88f, 0.88f, 1.00f); 
     ImVec4 hover_bg_color = ImVec4(0.92f, 0.92f, 0.93f, 1.00f); 
     ImVec4 active_bg_color = ImVec4(0.88f, 0.88f, 0.90f, 1.00f); 
+
     colors[ImGuiCol_Text] = text_color;
     colors[ImGuiCol_TextDisabled] = text_disabled_color;
     colors[ImGuiCol_WindowBg] = bg_main;
@@ -66,6 +69,7 @@ void ApplyCommandMenuStyle()
     colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
     colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
     colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.2f, 0.2f, 0.2f, 0.35f); 
+
     style.WindowRounding = 10.0f; 
     style.ChildRounding = 6.0f;
     style.FrameRounding = 8.0f;  
@@ -73,17 +77,20 @@ void ApplyCommandMenuStyle()
     style.ScrollbarRounding = 9.0f;
     style.GrabRounding = 6.0f;
     style.TabRounding = 6.0f;
+
     style.WindowBorderSize = 1.0f; 
     style.FrameBorderSize = 0.0f; 
     style.PopupBorderSize = 1.0f; 
     style.ChildBorderSize = 0.0f; 
     style.TabBorderSize = 0.0f; 
+
     style.WindowPadding = ImVec2(14.0f, 14.0f); 
     style.FramePadding = ImVec2(10.0f, 7.0f); 
     style.ItemSpacing = ImVec2(8.0f, 6.0f);  
     style.ItemInnerSpacing = ImVec2(6.0f, 5.0f);  
     style.ScrollbarSize = 12.0f; 
     style.GrabMinSize = 12.0f;
+
     style.WindowTitleAlign = ImVec2(0.5f, 0.5f); 
     style.WindowMenuButtonPosition = ImGuiDir_None; 
     style.ButtonTextAlign = ImVec2(0.5f, 0.5f); 
